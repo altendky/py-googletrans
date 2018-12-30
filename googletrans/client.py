@@ -77,6 +77,8 @@ class Translator(object):
                                     token=token)
         url = urls.TRANSLATE.format(host=self._pick_service_url())
         r = self.session.get(url, params=params)
+        print('encoding:', r.encoding)
+        r.encoding = 'utf-8'
 
         data = utils.format_json(r.text)
         return data
